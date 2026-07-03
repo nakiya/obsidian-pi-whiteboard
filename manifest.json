@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-pi-whiteboard",
+  "name": "Pi Whiteboard",
+  "version": "0.1.0",
+  "minAppVersion": "1.0.0",
+  "description": "AI-assisted research on Obsidian Canvas, powered by pi (rpc mode). Research, critique, decompose, and more — answers persist as connected canvas nodes.",
+  "author": "Duminda",
+  "authorUrl": "https://github.com/nakiya",
+  "isDesktopOnly": true
+}

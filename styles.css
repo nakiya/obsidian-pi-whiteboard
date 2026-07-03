@@ -1,0 +1,27 @@
+/* Pi Whiteboard status bar */
+.pi-whiteboard-status {
+    cursor: pointer;
+    padding: 0 4px;
+}
+
+.pi-whiteboard-status.pi-whiteboard-working {
+    color: var(--text-accent);
+    animation: pi-whiteboard-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pi-whiteboard-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.pi-whiteboard-modal-input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+}
+
+.pi-whiteboard-modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
