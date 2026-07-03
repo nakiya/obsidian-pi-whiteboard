@@ -50,16 +50,21 @@ favour of all-TypeScript in-process plumbing.
 
 ```bash
 npm install
-npm run dev      # esbuild watch → main.js
+npm run dev      # esbuild watch → main.js (auto-rebuild on change)
 # or
 npm run build    # one-shot production build
 ```
 
-The recommended dev setup is to symlink the vault plugin dir to this source dir so
-`manifest.json`, `main.js`, `styles.css`, and `.hotreload` all live in source:
+The recommended dev setup is a **real plugin directory** in the vault (Obsidian skips
+symlinked plugin folders in its directory scan). This repo's esbuild config reads a
+gitignored `.install-path` file (one line: the absolute vault plugin dir) and writes
+`main.js` there, copying `manifest.json`, `styles.css`, `prompts/`, and `.hotreload`
+alongside it on every build.
+
+Create `.install-path` once:
 
 ```bash
-ln -s /path/to/pi-whiteboard ~/Obsidian/<vault>/.obsidian/plugins/pi-whiteboard
+echo '/home/you/Obsidian/<vault>/.obsidian/plugins/pi-whiteboard' > .install-path
 ```
 
 Then toggle the plugin on in Obsidian. With hot-reload installed, editing TS rebuilds
@@ -67,5 +72,7 @@ Then toggle the plugin on in Obsidian. With hot-reload installed, editing TS reb
 
 ### Iteration loop
 
-- Edit TS → `npm run dev` rebuilds → hot-reload reloads the plugin.
-- Edit a prompt `.md` → re-run the action; no reload.
+- Edit TS → `npm run dev` (watch) rebuilds and copies → hot-reload reloads the plugin.
+- Edit a prompt `.md` → its copy is rewritten on the next build; re-run the action
+  (or `npm run build`) — no Obsidian reload needed.
+- `.install-path` is gitignored — your vault path stays out of the repo.

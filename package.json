@@ -4,7 +4,7 @@
   "description": "AI-assisted research on Obsidian Canvas, powered by pi (rpc mode).",
   "main": "main.js",
   "scripts": {
-    "dev": "node esbuild.config.mjs",
+    "dev": "node esbuild.config.mjs dev",
     "build": "node esbuild.config.mjs production"
   },
   "keywords": ["obsidian", "canvas", "ai", "research", "pi"],

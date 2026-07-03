@@ -52,9 +52,15 @@ decompose=2, question=6, evidence=4, analogy=3, implication=5, synthesize=5.
 
 ## Dev iteration
 
-- Symlink the vault plugin dir → this source dir.
-- Install `hot-reload` (pjeby) in the vault; `.hotreload` marker is committed here.
-- Edit TS → `npm run dev` → hot-reload reloads (~750ms). Edit a prompt → no reload.
+- Obsidian skips **symlinked** plugin folders in its directory scan, so the vault
+  plugin dir must be a REAL directory. esbuild writes there via a gitignored
+  `.install-path` file (one line = absolute vault plugin dir); each build also copies
+  `manifest.json`, `styles.css`, `prompts/`, `.hotreload`.
+- `npm run dev` = esbuild **watch** (auto-rebuild on TS change) + the install copy.
+- Install `hot-reload` (pjeby) in the vault; `.hotreload` marker is copied too.
+- Edit TS → `npm run dev` rebuilds → hot-reload reloads (~750ms). Edit a prompt →
+  `npm run build` (or just re-run the action after a build) — no Obsidian reload.
+- `.install-path` is gitignored (vault path stays out of the repo).
 
 ## Target vault
 
