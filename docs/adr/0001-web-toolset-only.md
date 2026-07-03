@@ -60,6 +60,11 @@ package (already installed globally via `pi install`), backed by Tavily via the
   `@counterposition/pi-web-search`, the agent loses web access (it would error on the
   first search). The plugin cannot detect this at spawn time — only at first tool call.
   Mitigation: the error message from the tool surfaces clearly in the response.
+- **Tavily key resolution.** The `@counterposition/pi-web-search` package reads
+  `TAVILY_API_KEY` from the environment first, then from `~/.pi/agent/settings.json`
+  under `webSearch.apiKeys.TAVILY_API_KEY`. The plugin stores nothing itself; for
+  GUI-launched Obsidian (where shell env vars are absent), the key should live in pi's
+  settings file so `web_search` keeps working.
 
 ## Deviation from the original design note
 

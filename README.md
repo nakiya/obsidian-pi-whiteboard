@@ -40,7 +40,10 @@ favour of all-TypeScript in-process plumbing.
 
 - `pi` on PATH (or set its path in settings). v0.79+.
 - The `@counterposition/pi-web-search` package installed for pi: `pi install npm:@counterposition/pi-web-search`.
-- `TAVILY_API_KEY` in the environment.
+- `TAVILY_API_KEY` available to pi — either as an environment variable, or (more
+  robust, survives GUI-launched Obsidian) stored in `~/.pi/agent/settings.json` under
+  `webSearch.apiKeys.TAVILY_API_KEY`. The plugin never handles the key itself; the
+  `@counterposition/pi-web-search` package reads it from either location.
 - Obsidian with the [hot-reload](https://github.com/pjeby/hot-reload) plugin for fast iteration.
 
 ### Build
