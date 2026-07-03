@@ -64,8 +64,10 @@ decompose=2, question=6, evidence=4, analogy=3, implication=5, synthesize=5.
 
 ## Target vault
 
-`~/Obsidian/Duminda` (Linux) / `E:\Obsidian\Duminda` (Windows). Vault path is derived at
-runtime from `app.vault.adapter.basePath` — never hardcoded.
+Linux: `~/Obsidian` (the top-level dir — registered as the open vault in
+`~/.config/obsidian/obsidian.json`; `Duminda/` is a stale sub-folder, NOT the
+vault root). Windows: `E:\Obsidian\Duminda`. Vault path is derived at runtime
+from `app.vault.adapter.basePath` — never hardcoded.
 
 ## v1 scope
 
